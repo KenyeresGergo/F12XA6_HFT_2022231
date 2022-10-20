@@ -11,12 +11,14 @@ namespace F12XA6_HFT_2022231.Models
     [Table("Developers")]
     internal class Developer : IDbEntity
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int Id { get; set; }
-
+        [MaxLength(240)]
         public string Name { get; set; }
 
-        public DevStudio Company { get; set; }
+        [Required]
+        public int CompanyId { get; set; }
 
         public int Salary { get; set; }
 
