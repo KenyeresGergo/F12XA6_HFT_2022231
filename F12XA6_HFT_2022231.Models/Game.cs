@@ -23,9 +23,17 @@ namespace F12XA6_HFT_2022231.Models
         [Required]
         public int PublisherStudioId { get; set; }
 
+        public DevStudio PublisherStudio { get; set; }
+
         [Required]
-        public ICollection<int> DeveloperIds { get; set; }
+        public ICollection<Developer> Developers { get; set; }
 
-
+        public Game(int id, string gameTitle, int price, int publisherStudioId)
+        {
+            Id = id;
+            GameTitle = gameTitle;
+            Price = price;
+            PublisherStudioId = publisherStudioId;
+        }
     }
 }

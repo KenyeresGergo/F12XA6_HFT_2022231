@@ -15,6 +15,11 @@ namespace F12XA6_HFT_2022231.Repository
         public DbSet<DevStudio> Studios { get; set; }
 
 
+        public GameDbContext()
+        {
+            this.Database.EnsureCreated();
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder bulider)
         {
             if (!bulider.IsConfigured)
@@ -26,6 +31,28 @@ namespace F12XA6_HFT_2022231.Repository
 
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)          //TODO   dev lista
+        {
+            modelBuilder.Entity<Game>(game => game
+                .HasOne(game => game.PublisherStudio)
+                .WithMany(studio => studio.Games)
+                .HasForeignKey(game => game.PublisherStudioId)
+            );
+
+            modelBuilder.Entity<Developer>(dev => dev
+                .HasOne(dev => dev.Company)
+                .WithMany(company => company.Employees)
+                .HasForeignKey(dev => dev.CompanyId)
+            );
+
+            modelBuilder.Entity<DevStudio>(Studio => Studio
+                .HasMany(studio => studio.Games)
+                .WithOne( game => game.PublisherStudio)
+            );
+
+
+
+        }
 
 
 

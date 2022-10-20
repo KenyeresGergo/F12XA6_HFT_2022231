@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace F12XA6_HFT_2022231.Models
 {
     [Table("Developer Studios")]
-    public class DevStudio :IDbEntity
+    public class DevStudio : IDbEntity
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
@@ -18,10 +18,22 @@ namespace F12XA6_HFT_2022231.Models
         [MaxLength(240)]
         public string StudioName { get; set; }
 
-        
-        public ICollection<int> GamesIds { get; set; }
 
-        
-        public ICollection<int> EmployeesIds { get; set; }
+        public ICollection<Game> Games { get; set; }
+
+
+        public ICollection<Developer> Employees { get; set; }
+
+
+        public DevStudio(int id, string studioName)
+        {
+            Id = id;
+            StudioName = studioName;
+        }
+
+        public DevStudio()
+        {
+                
+        }
     }
 }

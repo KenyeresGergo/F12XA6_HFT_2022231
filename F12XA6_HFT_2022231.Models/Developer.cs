@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection.Emit;
 
 namespace F12XA6_HFT_2022231.Models
 {
@@ -17,11 +18,19 @@ namespace F12XA6_HFT_2022231.Models
         [MaxLength(240)]
         public string DevName { get; set; }
 
-        [Required]
         public int CompanyId { get; set; }
+
+        [Required]
+        public DevStudio Company { get; set; }
 
         public int Salary { get; set; }
 
-
+        public Developer(int id, string devName, int companyId, int salary)
+        {
+            Id = id;
+            DevName = devName;
+            CompanyId = companyId;
+            Salary = salary;
+        }
     }
 }
