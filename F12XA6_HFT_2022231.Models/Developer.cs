@@ -21,7 +21,7 @@ namespace F12XA6_HFT_2022231.Models
         public int CompanyId { get; set; }
 
         [Required]
-        public DevStudio Company { get; set; }
+        public virtual DevStudio Company { get; set; }
 
         public int Salary { get; set; }  //USD / year
 

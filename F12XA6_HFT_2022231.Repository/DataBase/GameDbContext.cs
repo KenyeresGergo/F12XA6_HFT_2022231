@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace F12XA6_HFT_2022231.Repository
 {
-    internal class GameDbContext : DbContext
+    public class GameDbContext : DbContext
     {
         public DbSet<Game> Games { get; set; }
         public DbSet<Developer> Developers { get; set; }

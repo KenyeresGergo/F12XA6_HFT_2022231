@@ -19,10 +19,10 @@ namespace F12XA6_HFT_2022231.Models
         public string StudioName { get; set; }
 
 
-        public ICollection<Game> Games { get; set; }
+        public virtual ICollection<Game> Games { get; set; }
 
 
-        public ICollection<Developer> Employees { get; set; }
+        public  virtual ICollection<Developer> Employees { get; set; }
 
 
         public DevStudio(int id, string studioName)
