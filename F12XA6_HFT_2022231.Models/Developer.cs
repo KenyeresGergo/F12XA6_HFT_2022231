@@ -23,7 +23,7 @@ namespace F12XA6_HFT_2022231.Models
         [Required]
         public DevStudio Company { get; set; }
 
-        public int Salary { get; set; }
+        public int Salary { get; set; }  //USD / year
 
         public Developer(int id, string devName, int companyId, int salary)
         {
