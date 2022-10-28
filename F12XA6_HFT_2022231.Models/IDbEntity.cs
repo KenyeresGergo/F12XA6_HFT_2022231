@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace F12XA6_HFT_2022231.Models
 {
-    internal interface IDbEntity
+    public interface IDbEntity
     {
         int Id { get; set; }
     }

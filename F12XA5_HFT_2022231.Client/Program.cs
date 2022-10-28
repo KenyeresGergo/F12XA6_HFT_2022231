@@ -10,8 +10,8 @@ namespace F12XA5_HFT_2022231.Client
         static void Main(string[] args)
         {
             GameDbContext ctx = new GameDbContext();
-            //ctx.Games.ToList().ForEach(t => Console.WriteLine(t.GameTitle +"\t"+ t.PublisherStudioId +"\t"+ t.Id));
-            ctx.Developers.ToList().ForEach(t => Console.WriteLine(t.Company +"\t"+t.DevName));
+            ctx.Games.ToList().ForEach(t => Console.WriteLine(t.GameTitle +"\t"+ t.PublisherStudioId +"\t"+ t.Id));
+            //ctx.Developers.ToList().ForEach(t => Console.WriteLine(t.Company +"\t"+t.DevName));
             ;
         }
     }

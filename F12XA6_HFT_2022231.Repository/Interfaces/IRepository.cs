@@ -10,8 +10,8 @@ namespace F12XA6_HFT_2022231.Repository.Interfaces
     {
         void Create(T item);
         public T Read(int id);
-        IQueryable<T> ReadAll();
-        void Update(T item);
+        IEnumerable<T> ReadAll();
+        bool Update(T item);
         void Delete(int id);
 
     }
