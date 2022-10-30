@@ -35,5 +35,14 @@ namespace F12XA6_HFT_2022231.Models
         {
                 
         }
+
+        public void CopyFrom(DevStudio other)
+        {
+            this.Id = other.Id;
+            this.StudioName = other.StudioName;
+            this.Employees = other.Employees;
+            this.Games = other.Games;
+            this.Employees = other.Employees;
+        }
     }
 }

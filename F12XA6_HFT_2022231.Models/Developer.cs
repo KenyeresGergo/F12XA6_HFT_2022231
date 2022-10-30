@@ -20,7 +20,7 @@ namespace F12XA6_HFT_2022231.Models
 
         public int CompanyId { get; set; }
 
-        [Required]
+        
         public virtual DevStudio Company { get; set; }
 
         public int Salary { get; set; }  //USD / year
@@ -31,6 +31,15 @@ namespace F12XA6_HFT_2022231.Models
             DevName = devName;
             CompanyId = companyId;
             Salary = salary;
+        }
+
+        public void CopyFrom(Developer other)  //TODO DevStudio-t copyzni
+        {
+            this.Id = other.Id;
+            this.DevName = other.DevName;
+            this.CompanyId = other.CompanyId;
+            this.Salary = other.Salary;
+            this.Company = other.Company;
         }
     }
 }

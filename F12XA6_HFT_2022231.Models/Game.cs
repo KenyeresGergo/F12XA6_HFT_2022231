@@ -15,8 +15,8 @@ namespace F12XA6_HFT_2022231.Models
         [Key]
         public int Id { get; set; }
 
-        [MaxLength (240)]
-        public string GameTitle  { get; set; }
+        [MaxLength(240)]
+        public string GameTitle { get; set; }
 
         public int Price { get; set; }
 
@@ -36,6 +36,15 @@ namespace F12XA6_HFT_2022231.Models
             PublisherStudioId = publisherStudioId;
             //PublisherStudio = 
             //Developers = PublisherStudio.Employees;
+        }
+
+        public void CopyFrom(Game old)
+        {
+            this.Id = old.Id;
+            this.GameTitle = old.GameTitle;
+            this.Price = old.Price;
+            this.PublisherStudioId = old.PublisherStudioId;
+            this.Developers = old.Developers;   
         }
     }
 }
