@@ -13,9 +13,7 @@
     <Content Include="Game.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Game_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Game_log.ldf" />
   </ItemGroup>
 
   <ItemGroup>
