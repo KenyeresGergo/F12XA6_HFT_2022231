@@ -41,6 +41,11 @@ namespace F12XA6_HFT_2022231.Models
             //Developers = PublisherStudio.Employees;
         }
 
+        public Game()
+        {
+            
+        }
+
         public void CopyFrom(Game old)
         {
             this.Id = old.Id;
