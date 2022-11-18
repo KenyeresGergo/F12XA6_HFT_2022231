@@ -17,7 +17,7 @@ namespace F12XA6_HFT_2022231.Models
         public int Id { get; set; }
         [MaxLength(240)]
         public string DevName { get; set; }
-
+        [ForeignKey("CompanyId")]
         public int CompanyId { get; set; }
 
         
