@@ -8,11 +8,11 @@ using F12XA6_HFT_2022231.Repository.Interfaces;
 
 namespace F12XA6_HFT_2022231.Repository
 {
-    internal class GameRpository : Repository<Game> , IRepository<Game>
+    public class GameRepository : Repository<Game> , IRepository<Game>
     {
         private readonly GameDbContext context;
 
-        public GameRpository(GameDbContext context) : base(context)
+        public GameRepository(GameDbContext context) : base(context)
         {
             this.context = context;
         }

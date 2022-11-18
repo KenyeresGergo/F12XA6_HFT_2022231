@@ -8,7 +8,7 @@ using F12XA6_HFT_2022231.Repository.Interfaces;
 
 namespace F12XA6_HFT_2022231.Repository
 {
-    internal class DevStudioRepository : Repository<DevStudio>, IRepository<DevStudio>
+    public class DevStudioRepository : Repository<DevStudio>, IRepository<DevStudio>
     {
         private readonly GameDbContext context;
 

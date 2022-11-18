@@ -9,10 +9,10 @@ using F12XA6_HFT_2022231.Repository.Interfaces;
 
 namespace F12XA6_HFT_2022231.Repository
 {
-    internal class DirectorRepository : Repository<Developer>, IRepository<Developer>
+    public class DeveloperRepository : Repository<Developer>, IRepository<Developer>
     {
         private readonly GameDbContext context;
-        public DirectorRepository(GameDbContext context) : base(context)
+        public DeveloperRepository(GameDbContext context) : base(context)
         {
             this.context = context;
         }
