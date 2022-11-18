@@ -52,17 +52,17 @@ namespace F12XA6_HFT_2022231.Repository
 
             modelBuilder.Entity<Game>().HasData(new Game[]
                 {
-                    new Game(1,"Cyberpunk2077", 60, 1),
-                    new Game(2,"Grand Theft Auto V", 50, 2),
-                    new Game(3,"Grand Theft Auto IV", 30, 2),
-                    new Game(4,"The Witcher 3: Wild hunt", 55, 1),
-                    new Game(5,"DOOM Ethernal", 40, 3),
-                    new Game(6,"Far Cry 6", 70, 4),
-                    new Game(7,"Far Cry 3", 20, 4),
-                    new Game(8,"Just Cause 4", 35, 5),
-                    new Game(9,"Valorant", 0, 6),
-                    new Game(10,"Call of Duty 4: Modern Warfare", 10, 7),
-                    new Game(11,"Sekiro: Shadows Die Twice", 70,8)
+                    new Game(1,"Cyberpunk2077", 60, 1,2),
+                    new Game(2,"Grand Theft Auto V", 50, 2,7),
+                    new Game(3,"Grand Theft Auto IV", 30, 2,6),
+                    new Game(4,"The Witcher 3: Wild hunt", 55, 1,4),
+                    new Game(5,"DOOM Ethernal", 40, 3,3),
+                    new Game(6,"Far Cry 6", 70, 4,5),
+                    new Game(7,"Far Cry 3", 20, 4,10),
+                    new Game(8,"Just Cause 4", 35, 5,8),
+                    new Game(9,"Valorant", 0, 6,4),
+                    new Game(10,"Call of Duty 4: Modern Warfare", 10, 7, 9),
+                    new Game(11,"Sekiro: Shadows Die Twice", 70,8,7)
                     
                 }
             );

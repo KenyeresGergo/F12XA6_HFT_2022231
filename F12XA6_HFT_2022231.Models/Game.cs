@@ -19,6 +19,8 @@ namespace F12XA6_HFT_2022231.Models
         public string GameTitle { get; set; }
 
         public int Price { get; set; }
+        [Range(0,10)]
+        public int Rating { get; set; }
 
         [Required]
         public int PublisherStudioId { get; set; }
@@ -28,12 +30,13 @@ namespace F12XA6_HFT_2022231.Models
         [Required]
         public virtual ICollection<Developer> Developers { get; set; }
 
-        public Game(int id, string gameTitle, int price, int publisherStudioId)
+        public Game(int id, string gameTitle, int price, int publisherStudioId, int rating)
         {
             Id = id;
             GameTitle = gameTitle;
             Price = price;
             PublisherStudioId = publisherStudioId;
+            Rating = rating;
             //PublisherStudio = 
             //Developers = PublisherStudio.Employees;
         }
