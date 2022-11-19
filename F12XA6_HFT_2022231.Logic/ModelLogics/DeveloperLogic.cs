@@ -45,14 +45,14 @@ namespace F12XA6_HFT_2022231.Logic.ModelLogics
 
         #region nonCRUD methods
 
-        public IEnumerable<DevStudioLogic.StudiInfo> EmployeeNamesByCompany()//REturn the names of the workers by company
+        public IEnumerable<DeveloperInfo> EmployeeNamesByCompany()//REturn the names of the workers by company
         {
             var res = from x in repo.ReadAll()
                 group x by x.Company
                 into g
-                select new DevStudioLogic.StudiInfo
+                select new DeveloperInfo
                 {
-                    StudioName = g.Key.StudioName,
+                    CompanyName = g.Key.StudioName,
                     Developernames = g.Key.Employees.Select(t => t.DevName)
                 };
             return res;
@@ -67,7 +67,7 @@ namespace F12XA6_HFT_2022231.Logic.ModelLogics
         public class DeveloperInfo
         {
             public string CompanyName { get; set; }
-
+            public  IEnumerable<string> Developernames { get; set; }
 
         }
     }
