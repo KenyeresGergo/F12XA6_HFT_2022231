@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,33 @@ namespace F12XA6_HFT_2022231.Logic.ModelLogics
             this.repo = repo;
         }
 
+        public void Create(Developer item)
+        {
+            this.repo.Create(item);
+        }
+        public Developer Read(int id)
+        {
+            return this.repo.Read(id);
+        }
+
+        public IEnumerable<Developer> ReadAll()
+        {
+            return this.repo.ReadAll();
+        }
+
+        public void Update(Developer item)
+        {
+            this.repo.Update(item);
+        }
+        public void Delete(int id)
+        {
+            this.repo.Delete(id);
+        }
+
+        
+
+        #region nonCRUD methods
+
         public IEnumerable<DevStudioLogic.StudiInfo> EmployeeNamesByCompany()//REturn the names of the workers by company
         {
             var res = from x in repo.ReadAll()
@@ -29,6 +57,10 @@ namespace F12XA6_HFT_2022231.Logic.ModelLogics
                 };
             return res;
         }
+
+
+        #endregion
+
 
 
 

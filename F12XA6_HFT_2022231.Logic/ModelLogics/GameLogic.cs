@@ -18,6 +18,28 @@ namespace F12XA6_HFT_2022231.Logic.ModelLogics
             this.repository = repository;
         }
 
+        public void Create(Game item)
+        {
+            this.repository.Create(item);
+        }
+        public Game Read(int id)
+        {
+            return this.repository.Read(id);
+        }
+
+        public IEnumerable<Game> ReadAll()
+        {
+            return this.repository.ReadAll();
+        }
+
+        public void Update(Game item)
+        {
+            this.repository.Update(item);
+        }
+        public void Delete(int id)
+        {
+            this.repository.Delete(id);
+        }
         //public IEnumerable<DevStudio> GamesByPublisherStudio()
         //{
         //    var res = from x in repository.ReadAll()
@@ -30,6 +52,8 @@ namespace F12XA6_HFT_2022231.Logic.ModelLogics
         //        };
         //    return res;
         //}
+
+        #region non CRUD methods
 
         public IEnumerable<GameInfo> GameCountByStudio() //Returns the number of games produced by a studio
         {
@@ -51,11 +75,14 @@ namespace F12XA6_HFT_2022231.Logic.ModelLogics
                 into g
                 select new GameInfo
                 {
-                    AvgRating = g.Key.Games.Select(t=>t.Rating).Average(),
+                    AvgRating = g.Key.Games.Select(t => t.Rating).Average(),
                     PublisherStudioName = g.Key.StudioName
                 };
             return res;
         }
+
+        #endregion
+
 
         public class GameInfo
         {
