@@ -26,12 +26,15 @@ namespace F12XA6_HFT_2022231.Logic
             return res;
         }
 
+       
 
         #endregion
         public class StudiInfo
         {
             public IEnumerable<string> GameTytles { get; set; }
             public string StudioName { get; set; }
+            public IEnumerable<string> Developernames { get; set; }
+
         }
     }
 }

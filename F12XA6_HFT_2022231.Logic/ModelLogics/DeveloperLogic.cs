@@ -17,8 +17,19 @@ namespace F12XA6_HFT_2022231.Logic.ModelLogics
             this.repo = repo;
         }
 
+        public IEnumerable<DevStudioLogic.StudiInfo> EmployeeNamesByCompany()//REturn the names of the workers by company
+        {
+            var res = from x in repo.ReadAll()
+                group x by x.Company
+                into g
+                select new DevStudioLogic.StudiInfo
+                {
+                    StudioName = g.Key.StudioName,
+                    Developernames = g.Key.Employees.Select(t => t.DevName)
+                };
+            return res;
+        }
 
-        
 
 
         public class DeveloperInfo
