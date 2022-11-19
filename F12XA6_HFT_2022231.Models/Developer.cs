@@ -20,7 +20,7 @@ namespace F12XA6_HFT_2022231.Models
         [ForeignKey("CompanyId")]
         public int CompanyId { get; set; }
 
-        
+        [NotMapped]
         public virtual DevStudio Company { get; set; }
 
         public int Salary { get; set; }  //USD / year

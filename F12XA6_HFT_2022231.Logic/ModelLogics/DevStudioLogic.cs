@@ -18,13 +18,16 @@ namespace F12XA6_HFT_2022231.Logic
         {
             this.repo = reop;
         }
-        public IEnumerable<ICollection<Game>> ValamiGamesByStudioName(string studioname) //Returns a list that contains the name of workers for a studio
+        #region nonCRUD methods
+        public IEnumerable<ICollection<Game>> GamesByStudioName(string studioname) //Returns a list that contains the name of workers for a studio order by the number of games
         {
             var res =
-                repo.ReadAll().Where(t => t.StudioName == studioname).Select(t => t.Games);
+                repo.ReadAll().Where(t => t.StudioName == studioname).Select(t => t.Games).OrderBy(t=>t.Count);
             return res;
         }
 
+
+        #endregion
         public class StudiInfo
         {
             public IEnumerable<string> GameTytles { get; set; }

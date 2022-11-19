@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using F12XA6_HFT_2022231.Models;
 using F12XA6_HFT_2022231.Repository.Interfaces;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 
 namespace F12XA6_HFT_2022231.Logic.ModelLogics
 {
@@ -37,18 +38,33 @@ namespace F12XA6_HFT_2022231.Logic.ModelLogics
                 into g
                 select new GameInfo()
                 {
-                    PublisherStudioNameName = g.Key.StudioName,
+                    PublisherStudioName = g.Key.StudioName,
                     GameCount = g.Key.Games.Count
                 };
             return res;
         }
-      
+
+        public IEnumerable<GameInfo> AvgRatingByStudio() //Returns the average rating of games by a studio
+        {
+            var res = from x in repository.ReadAll()
+                group x by x.PublisherStudio
+                into g
+                select new GameInfo
+                {
+                    AvgRating = g.Key.Games.Select(t=>t.Rating).Average(),
+                    PublisherStudioName = g.Key.StudioName
+                };
+            return res;
+        }
+
         public class GameInfo
         {
-            public string PublisherStudioNameName { get; set; }
+            public string PublisherStudioName { get; set; }
             public string GameName { get; set; }
             public int GameCount { get; set; }
-           
+            public double AvgRating { get; set; }
+
+
         }
     }
 

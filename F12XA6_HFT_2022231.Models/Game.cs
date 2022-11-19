@@ -24,7 +24,7 @@ namespace F12XA6_HFT_2022231.Models
 
         [Required]
         public int PublisherStudioId { get; set; }
-
+        [NotMapped]
         public virtual DevStudio PublisherStudio { get; set; }
 
         [Required]
