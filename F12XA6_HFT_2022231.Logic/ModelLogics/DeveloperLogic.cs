@@ -20,6 +20,14 @@ namespace F12XA6_HFT_2022231.Logic.ModelLogics
 
         public void Create(Developer item)
         {
+            if (item.Company is null || item.Salary == 0)
+            {
+                throw new ArgumentNullException();
+            }
+            else if (item.DevName.Length == 0)
+            {
+                throw new Exception("The name of the developer can't be an empty string");
+            }
             this.repo.Create(item);
         }
         public Developer Read(int id)
@@ -45,15 +53,15 @@ namespace F12XA6_HFT_2022231.Logic.ModelLogics
 
         #region nonCRUD methods
 
-        public IEnumerable<DeveloperInfo> EmployeeNamesByCompany()//REturn the names of the workers by company
+        public IEnumerable<DeveloperInfo> EmployeeNamesByCompany()//Return the names of the workers by company
         {
             var res = from x in repo.ReadAll()
                 group x by x.Company
-                into g
+                into g orderby g.Key.Id
                 select new DeveloperInfo
                 {
                     CompanyName = g.Key.StudioName,
-                    Developernames = g.Key.Employees.Select(t => t.DevName)
+                    Developernames = g.Key.Employees.Select(t => t.DevName).ToList()
                 };
             return res;
         }
@@ -67,7 +75,7 @@ namespace F12XA6_HFT_2022231.Logic.ModelLogics
         public class DeveloperInfo
         {
             public string CompanyName { get; set; }
-            public  IEnumerable<string> Developernames { get; set; }
+            public  List<string> Developernames { get; set; }
 
         }
     }

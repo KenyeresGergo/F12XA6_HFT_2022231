@@ -69,9 +69,9 @@ namespace F12XA6_HFT_2022231.Logic.Tests
         public void GameCountByStudioWithRightInput()
         {
 
-            var logic = new GameLogic(mockGameRepo.Object);
+            gameLogic = new GameLogic(mockGameRepo.Object);
 
-            var res = logic.GameCountByStudio();
+            var res = gameLogic.GameCountByStudio();
 
             Assert.That(res.First().GameCount, Is.EqualTo(2));
             Assert.That(res.First().PublisherStudioName, Is.EqualTo("CD Pojekt RED"));
@@ -123,6 +123,58 @@ namespace F12XA6_HFT_2022231.Logic.Tests
             mockGameRepo.Verify(g=>g.Create(null), Times.Never);
         }
         #endregion
+        #endregion
+
+        #region DeveloperLogic Tests
+
+        #region non CRUD Tests
+
+        [Test]
+        public void DeveloperEmployeeNamesByCompanyTest()
+        {
+
+            devLogic = new DeveloperLogic(mockDevRepo.Object);
+
+            var res = devLogic.EmployeeNamesByCompany();
+
+            Assert.That(res.First().Developernames, Is.EqualTo(new List<string>{ "Carter", "Mike" }));
+            Assert.That(res.First().CompanyName, Is.EqualTo("CD Pojekt RED"));
+            Assert.That(res.ElementAt(1).Developernames, Is.EqualTo(new List<string> { "Noah" }));
+            Assert.That(res.ElementAt(1).CompanyName, Is.EqualTo("Rockstar Games"));
+
+        }
+
+        #endregion
+
+        #region Create Tests
+
+        [Test]
+        public void DeveloperCreateObjectIsNull()
+        {
+            devLogic = new DeveloperLogic(mockDevRepo.Object);
+            mockDevRepo.Verify(g => g.Create(null), Times.Never);
+        }
+        [Test]
+        public void DeveloperCreateCompanyIsNull()
+        {
+            devLogic = new DeveloperLogic(mockDevRepo.Object);
+            mockDevRepo.Verify(g => g.Create(new Developer{ Id = 2, DevName = "Carter", Salary = 64000 }), Times.Never);
+        }
+        [Test]
+        public void DeveloperCreateDevNameIsNull()
+        {
+            devLogic = new DeveloperLogic(mockDevRepo.Object);
+            mockDevRepo.Verify(g => g.Create(new Developer { Id = 2, Company = new DevStudio(), Salary = 64000 }), Times.Never);
+        } 
+        [Test]
+        public void DeveloperCreateDevNameIsEmpty()
+        {
+            devLogic = new DeveloperLogic(mockDevRepo.Object);
+            mockDevRepo.Verify(g => g.Create(new Developer { Id = 2, DevName = "",Company = new DevStudio(), Salary = 64000 }), Times.Never);
+        }
+
+        #endregion
+
         #endregion
 
 
