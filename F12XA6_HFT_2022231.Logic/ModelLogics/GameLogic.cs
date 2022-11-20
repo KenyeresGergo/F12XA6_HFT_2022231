@@ -72,7 +72,7 @@ namespace F12XA6_HFT_2022231.Logic.ModelLogics
         {
             var res = from x in repository.ReadAll()
                 group x by x.PublisherStudio
-                into g
+                into g orderby g.Key.Id
                 select new GameInfo
                 {
                     AvgRating = g.Key.Games.Select(t => t.Rating).Average(),

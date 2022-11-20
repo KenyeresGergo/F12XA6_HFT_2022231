@@ -33,6 +33,11 @@ namespace F12XA6_HFT_2022231.Models
             Salary = salary;
         }
 
+        public Developer()
+        {
+            
+        }
+
         public void CopyFrom(Developer other)  //TODO DevStudio-t copyzni
         {
             this.Id = other.Id;
