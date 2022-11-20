@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Castle.DynamicProxy.Internal;
@@ -60,6 +61,10 @@ namespace F12XA6_HFT_2022231.Logic.Tests
 
         }
 
+        #region GameLogic Tests
+
+        #region non CRUD method tests
+
         [Test]
         public void GameCountByStudioWithRightInput()
         {
@@ -88,5 +93,39 @@ namespace F12XA6_HFT_2022231.Logic.Tests
             Assert.That(res.ElementAt(1).PublisherStudioName, Is.EqualTo("Rockstar Games"));
 
         }
+
+        #endregion
+
+        #region Create tests
+
+        [Test]
+        public void GameCreateDevelopersIsNull()
+        {
+            var logic = new GameLogic(mockGameRepo.Object);
+            mockGameRepo.Verify(g=>g.Create(new Game { Id = 1, GameTitle = "Cyberpunk2077",Price = 60, Rating = 2,PublisherStudio = new DevStudio()}), Times.Never);
+        }  
+        [Test]
+        public void GameCreaGameTitleIsNull()
+        {
+            var logic = new GameLogic(mockGameRepo.Object);
+            mockGameRepo.Verify(g=>g.Create(new Game { Id = 1, GameTitle = "",Developers = new List<Developer>(),Price = 60, Rating = 2, PublisherStudio = new DevStudio() }), Times.Never);
+        } 
+        [Test]
+        public void GameCreatePublisherStudioIsNull()
+        {
+            var logic = new GameLogic(mockGameRepo.Object);
+            mockGameRepo.Verify(g=>g.Create(new Game { Id = 1, GameTitle = "Cyberpunk2077", Developers = new List<Developer>(),Price = 60, Rating = 2 }), Times.Never);
+        } 
+        [Test]
+        public void GameCreateObjectIsNull()
+        {
+            var logic = new GameLogic(mockGameRepo.Object);
+            mockGameRepo.Verify(g=>g.Create(null), Times.Never);
+        }
+        #endregion
+        #endregion
+
+
+
     }
 }

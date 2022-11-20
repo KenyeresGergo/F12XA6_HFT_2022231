@@ -20,6 +20,14 @@ namespace F12XA6_HFT_2022231.Logic.ModelLogics
 
         public void Create(Game item)
         {
+            if (item == null || item.Developers == null || item.GameTitle == null || item.PublisherStudio == null)
+            {
+                throw new ArgumentNullException();
+            }
+            else if (item.GameTitle.Length == 0)
+            {
+                throw new Exception("GameTitle can't be an empty string");
+            }
             this.repository.Create(item);
         }
         public Game Read(int id)
@@ -34,25 +42,21 @@ namespace F12XA6_HFT_2022231.Logic.ModelLogics
 
         public void Update(Game item)
         {
+            if (item == null || item.Developers == null || item.GameTitle == null || item.PublisherStudio == null)
+            {
+                throw new ArgumentNullException();
+            }
+            else if (item.GameTitle.Length == 0)
+            {
+                throw new Exception("GameTitle can't be an empty string");
+            }
             this.repository.Update(item);
         }
         public void Delete(int id)
         {
             this.repository.Delete(id);
         }
-        //public IEnumerable<DevStudio> GamesByPublisherStudio()
-        //{
-        //    var res = from x in repository.ReadAll()
-        //        group x by x.PublisherStudio.StudioName
-        //        into g
-        //        select new Game()
-        //        {
-        //            PublisherStudio = g.Key.ToString(),
-        //            GameTitle = g.Select(t=>t.GameTitle).ToString()//lehet szar
-        //        };
-        //    return res;
-        //}
-
+       
         #region non CRUD methods
 
         public IEnumerable<GameInfo> GameCountByStudio() //Returns the number of games produced by a studio
@@ -87,11 +91,8 @@ namespace F12XA6_HFT_2022231.Logic.ModelLogics
         public class GameInfo
         {
             public string PublisherStudioName { get; set; }
-            public string GameName { get; set; }
             public int GameCount { get; set; }
             public double AvgRating { get; set; }
-
-
         }
     }
 
