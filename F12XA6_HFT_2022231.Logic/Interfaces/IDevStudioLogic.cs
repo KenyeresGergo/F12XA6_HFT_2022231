@@ -9,10 +9,10 @@ namespace F12XA6_HFT_2022231.Logic
 {
     public interface IDevStudioLogic
     {
-        public void Create(Developer item);
-        public Developer Read(int id);
-        public IEnumerable<Developer> ReadAll();
-        public void Update(Developer item);
+        public void Create(DevStudio item);
+        public DevStudio Read(int id);
+        public IEnumerable<DevStudio> ReadAll();
+        public void Update(DevStudio item);
         public void Delete(int Id);
 
         public IEnumerable<ICollection<Game>> GamesOfASelectedStudio(string studioname);

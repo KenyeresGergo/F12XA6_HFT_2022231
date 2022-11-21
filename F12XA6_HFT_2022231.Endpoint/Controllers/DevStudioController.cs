@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using F12XA6_HFT_2022231.Logic;
 using F12XA6_HFT_2022231.Logic.Interfaces;
+using F12XA6_HFT_2022231.Models;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -20,34 +21,37 @@ namespace F12XA6_HFT_2022231.Endpoint.Controllers
 
         // GET: api/<DevStudioController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<DevStudio> ReadAll()
         {
-            return new string[] { "value1", "value2" };
+            return this.logic.ReadAll();
         }
 
         // GET api/<DevStudioController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public DevStudio Read(int id)
         {
-            return "value";
+            return this.logic.Read(id);
         }
 
         // POST api/<DevStudioController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Create([FromBody] DevStudio value)
         {
+            this.logic.Create(value);
         }
 
         // PUT api/<DevStudioController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        public void Update([FromBody] DevStudio value)
         {
+            this.logic.Update(value);
         }
 
         // DELETE api/<DevStudioController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            this.logic.Delete(id);
         }
     }
 }
