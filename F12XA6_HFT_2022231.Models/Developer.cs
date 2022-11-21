@@ -39,7 +39,7 @@ namespace F12XA6_HFT_2022231.Models
             
         }
 
-        public void CopyFrom(Developer other)  //TODO DevStudio-t copyzni
+        public void CopyFrom(Developer other)  
         {
             this.Id = other.Id;
             this.DevName = other.DevName;

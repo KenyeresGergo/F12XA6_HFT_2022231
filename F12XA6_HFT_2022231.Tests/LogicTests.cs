@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
@@ -175,6 +176,21 @@ namespace F12XA6_HFT_2022231.Tests
             Assert.That(res.ElementAt(1).CompanyName, Is.EqualTo("Rockstar Games"));
 
         }
+        [Test]
+        public void GamesCountByWorkplaceTest()
+        {
+
+            var logic = new DeveloperLogic(mockDevRepo.Object);
+
+            var res = logic.GamesCountByWorkplace();
+
+            Assert.That(res.First().CompanyName, Is.EqualTo("CD Pojekt RED"));
+            Assert.That(res.First().GameCount,Is.EqualTo(2));
+            Assert.That(res.ElementAt(1).CompanyName, Is.EqualTo("Rockstar Games"));
+            Assert.That(res.ElementAt(1).GameCount, Is.EqualTo(2));
+
+        }
+       
 
         #endregion
 
@@ -247,6 +263,29 @@ namespace F12XA6_HFT_2022231.Tests
 
         #region DevStudiLogic Tests
 
+
+        #region non CRUD Tests
+
+        [Test]
+        public void GamesOfASelectedStudioWithWrongInput()
+        {
+
+            var logic = new DevStudioLogic(mockStudioRepo.Object);
+
+            Assert.Throws<Exception>(() => logic.GamesOfASelectedStudio("wrong input"));
+
+        }
+        [Test]
+        public void GamesOfASelectedStudioWithNullInput()
+        {
+
+            var logic = new DevStudioLogic(mockStudioRepo.Object);
+
+            Assert.Throws<ArgumentNullException>(() => logic.GamesOfASelectedStudio(null));
+
+        }
+
+        #endregion
         #region Create tests
 
         [Test]

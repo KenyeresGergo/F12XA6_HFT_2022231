@@ -84,6 +84,7 @@ namespace F12XA6_HFT_2022231.Logic.ModelLogics
                 };
             return res;
         }
+        
 
         #endregion
 
@@ -92,7 +93,8 @@ namespace F12XA6_HFT_2022231.Logic.ModelLogics
         {
             public string PublisherStudioName { get; set; }
             public int GameCount { get; set; }
-            public double AvgRating { get; set; }
+            public double AvgRating { get; set; } 
+            public string GameName { get; set; }
         }
     }
 

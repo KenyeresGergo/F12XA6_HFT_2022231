@@ -67,6 +67,18 @@ namespace F12XA6_HFT_2022231.Logic.ModelLogics
             return res;
         }
 
+        public IEnumerable<DeveloperInfo> GamesCountByWorkplace()//developer cegenek hany jateka van
+        {
+            var res = from x in repo.ReadAll()
+                group x by x.Company
+                into g
+                select new DeveloperInfo()
+                {
+                    CompanyName = g.Key.StudioName,
+                    GameCount = g.Key.Games.Count
+                };
+            return res;
+        } 
 
         #endregion
 
@@ -77,6 +89,7 @@ namespace F12XA6_HFT_2022231.Logic.ModelLogics
         {
             public string CompanyName { get; set; }
             public  List<string> Developernames { get; set; }
+            public int GameCount { get; set; }
 
         }
     }
