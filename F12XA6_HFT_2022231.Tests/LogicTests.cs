@@ -1,14 +1,13 @@
-using System;
+using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
-using Castle.DynamicProxy.Internal;
+using F12XA6_HFT_2022231.Logic;
 using F12XA6_HFT_2022231.Logic.ModelLogics;
 using F12XA6_HFT_2022231.Models;
 using F12XA6_HFT_2022231.Repository.Interfaces;
 using Moq;
-using NUnit.Framework;
 
-namespace F12XA6_HFT_2022231.Logic.Tests
+namespace F12XA6_HFT_2022231.Tests
 {
     public class Tests
     {
@@ -102,8 +101,8 @@ namespace F12XA6_HFT_2022231.Logic.Tests
             var logic = new GameLogic(mockGameRepo.Object);
             var game = new Game { Id = 1, GameTitle = "Cyberpunk2077", Price = 60, Rating = 2, PublisherStudio = new DevStudio(), Developers = new List<Developer>() };
             logic.Create(game);
-            mockGameRepo.Verify(g=>g.Create(game), Times.Once);
-        }  
+            mockGameRepo.Verify(g => g.Create(game), Times.Once);
+        }
         [Test]
         public void GameCreateDevelopersIsNull()
         {
@@ -115,16 +114,16 @@ namespace F12XA6_HFT_2022231.Logic.Tests
             }
             catch
             {
-               
+
             }
-            mockGameRepo.Verify(g=>g.Create(game), Times.Never);
-        }  
+            mockGameRepo.Verify(g => g.Create(game), Times.Never);
+        }
         [Test]
         public void GameCreateGameTitleIsNull()
         {
             var logic = new GameLogic(mockGameRepo.Object);
-            mockGameRepo.Verify(g=>g.Create(new Game { Id = 1, GameTitle = "",Developers = new List<Developer>(),Price = 60, Rating = 2, PublisherStudio = new DevStudio() }), Times.Never);
-        } 
+            mockGameRepo.Verify(g => g.Create(new Game { Id = 1, GameTitle = "", Developers = new List<Developer>(), Price = 60, Rating = 2, PublisherStudio = new DevStudio() }), Times.Never);
+        }
         [Test]
         public void GameCreatePublisherStudioIsNull()
         {
@@ -134,12 +133,12 @@ namespace F12XA6_HFT_2022231.Logic.Tests
             {
                 logic.Create(game);
             }
-            catch 
+            catch
             {
-                
+
             }
             mockGameRepo.Verify(g => g.Create(game), Times.Never);
-        } 
+        }
         [Test]
         public void GameCreateObjectIsNull()
         {
@@ -150,10 +149,10 @@ namespace F12XA6_HFT_2022231.Logic.Tests
             }
             catch
             {
-               
+
             }
-            
-            mockGameRepo.Verify(g=>g.Create(null), Times.Never);
+
+            mockGameRepo.Verify(g => g.Create(null), Times.Never);
         }
         #endregion
         #endregion
@@ -170,7 +169,7 @@ namespace F12XA6_HFT_2022231.Logic.Tests
 
             var res = logic.EmployeeNamesByCompany();
 
-            Assert.That(res.First().Developernames, Is.EqualTo(new List<string>{ "Carter", "Mike" }));
+            Assert.That(res.First().Developernames, Is.EqualTo(new List<string> { "Carter", "Mike" }));
             Assert.That(res.First().CompanyName, Is.EqualTo("CD Pojekt RED"));
             Assert.That(res.ElementAt(1).Developernames, Is.EqualTo(new List<string> { "Noah" }));
             Assert.That(res.ElementAt(1).CompanyName, Is.EqualTo("Rockstar Games"));
@@ -189,9 +188,9 @@ namespace F12XA6_HFT_2022231.Logic.Tests
             {
                 logic.Create(null);
             }
-            catch 
+            catch
             {
-               
+
             }
             mockDevRepo.Verify(g => g.Create(null), Times.Never);
         }
@@ -204,9 +203,9 @@ namespace F12XA6_HFT_2022231.Logic.Tests
             {
                 logic.Create(dev);
             }
-            catch 
+            catch
             {
-               
+
             }
             mockDevRepo.Verify(g => g.Create(dev), Times.Never);
         }
@@ -225,7 +224,7 @@ namespace F12XA6_HFT_2022231.Logic.Tests
             }
             mockDevRepo.Verify(g => g.Create(dev), Times.Never);
 
-        } 
+        }
         [Test]
         public void DeveloperCreateDevNameIsEmpty()
         {
@@ -255,7 +254,7 @@ namespace F12XA6_HFT_2022231.Logic.Tests
         {
             var logic = new DevStudioLogic(mockStudioRepo.Object);
             var studio = new DevStudio
-                { Id = 1, StudioName = "CD Pojekt RED", Games = new List<Game>(), Employees = new List<Developer>() };
+            { Id = 1, StudioName = "CD Pojekt RED", Games = new List<Game>(), Employees = new List<Developer>() };
             logic.Create(studio);
             mockStudioRepo.Verify(g => g.Create(studio), Times.Once);
         }
@@ -264,14 +263,14 @@ namespace F12XA6_HFT_2022231.Logic.Tests
         {
             var logic = new DevStudioLogic(mockStudioRepo.Object);
             var studio = new DevStudio
-                { Id = 1, StudioName = "CD Pojekt RED", Employees = new List<Developer>() };
+            { Id = 1, StudioName = "CD Pojekt RED", Employees = new List<Developer>() };
             try
             {
                 logic.Create(studio);
             }
-            catch 
+            catch
             {
-                
+
             }
             mockStudioRepo.Verify(g => g.Create(studio), Times.Never);
         }
@@ -280,7 +279,7 @@ namespace F12XA6_HFT_2022231.Logic.Tests
         {
             var logic = new DevStudioLogic(mockStudioRepo.Object);
             var studio = new DevStudio
-                { Id = 1, StudioName = "CD Pojekt RED", Games = new List<Game>()};
+            { Id = 1, StudioName = "CD Pojekt RED", Games = new List<Game>() };
             try
             {
                 logic.Create(studio);
@@ -296,7 +295,7 @@ namespace F12XA6_HFT_2022231.Logic.Tests
         {
             var logic = new DevStudioLogic(mockStudioRepo.Object);
             var studio = new DevStudio
-                { Id = 1, Games = new List<Game>(), Employees = new List<Developer>() };
+            { Id = 1, Games = new List<Game>(), Employees = new List<Developer>() };
             try
             {
                 logic.Create(studio);
@@ -312,7 +311,7 @@ namespace F12XA6_HFT_2022231.Logic.Tests
         {
             var logic = new DevStudioLogic(mockStudioRepo.Object);
             var studio = new DevStudio
-                { Id = 1, StudioName = "", Games = new List<Game>(), Employees = new List<Developer>() };
+            { Id = 1, StudioName = "", Games = new List<Game>(), Employees = new List<Developer>() };
             try
             {
                 logic.Create(studio);
