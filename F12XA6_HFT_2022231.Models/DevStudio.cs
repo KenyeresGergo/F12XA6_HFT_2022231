@@ -29,8 +29,6 @@ namespace F12XA6_HFT_2022231.Models
         {
             Id = id;
             StudioName = studioName;
-            Games = new List<Game>();
-            Employees = new List<Developer>();
         }
 
         public DevStudio()
