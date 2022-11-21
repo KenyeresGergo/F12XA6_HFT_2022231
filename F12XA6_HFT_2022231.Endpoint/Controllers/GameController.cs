@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using F12XA6_HFT_2022231.Logic;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -9,7 +10,12 @@ namespace F12XA6_HFT_2022231.Endpoint.Controllers
     [ApiController]
     public class GameController : ControllerBase
     {
-        I
+        private IGameLogic logic;
+
+        public GameController(IGameLogic logic)
+        {
+            this.logic = logic;
+        }
 
         // GET: api/<GameController>
         [HttpGet]
