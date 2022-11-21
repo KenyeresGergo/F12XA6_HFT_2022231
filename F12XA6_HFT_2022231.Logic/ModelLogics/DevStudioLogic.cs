@@ -10,7 +10,7 @@ using static F12XA6_HFT_2022231.Logic.ModelLogics.DeveloperLogic;
 
 namespace F12XA6_HFT_2022231.Logic
 {
-    public class DevStudioLogic
+    public class DevStudioLogic : IDevStudioLogic
     {
         private IRepository<DevStudio> repo;
 
@@ -75,4 +75,6 @@ namespace F12XA6_HFT_2022231.Logic
 
         }
     }
+
+  
 }

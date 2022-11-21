@@ -4,12 +4,13 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using F12XA6_HFT_2022231.Logic.Interfaces;
 using F12XA6_HFT_2022231.Models;
 using F12XA6_HFT_2022231.Repository.Interfaces;
 
 namespace F12XA6_HFT_2022231.Logic.ModelLogics
 {
-    public class DeveloperLogic
+    public class DeveloperLogic : IDeveloperLogic
     {
         private IRepository<Developer> repo;
 

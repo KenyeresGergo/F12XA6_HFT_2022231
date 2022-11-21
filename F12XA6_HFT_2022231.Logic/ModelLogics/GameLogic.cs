@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 
 namespace F12XA6_HFT_2022231.Logic.ModelLogics
 {
-    public class GameLogic
+    public class GameLogic : IGameLogic
     {
         private IRepository<Game> repository;
 
