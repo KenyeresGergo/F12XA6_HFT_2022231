@@ -3,20 +3,27 @@ using F12XA6_HFT_2022231.Logic;
 using F12XA6_HFT_2022231.Logic.Interfaces;
 using F12XA6_HFT_2022231.Models;
 using Microsoft.AspNetCore.Mvc;
+using static F12XA6_HFT_2022231.Logic.ModelLogics.GameLogic;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace F12XA6_HFT_2022231.Endpoint.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]/[action]")]
     [ApiController]
     public class DevStudioController : ControllerBase
     {
         private IDevStudioLogic logic;
 
+        
         public DevStudioController(IDevStudioLogic logic)
         {
             this.logic = logic;
+        }
+        [HttpGet]
+        public IEnumerable<ICollection<Game>> GamesOfASelectedStudio(string studioname)
+        {
+            return this.logic.GamesOfASelectedStudio(studioname);
         }
 
         // GET: api/<DevStudioController>

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using F12XA6_HFT_2022231.Logic.Interfaces;
+using F12XA6_HFT_2022231.Logic.ModelLogics;
 using F12XA6_HFT_2022231.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace F12XA6_HFT_2022231.Endpoint.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]/[action]")]
     [ApiController]
     public class DeveloperController : ControllerBase
     {
@@ -17,6 +18,16 @@ namespace F12XA6_HFT_2022231.Endpoint.Controllers
         {
             this.logic = logic;
         }
+
+      
+        [HttpGet]
+        public IEnumerable<DeveloperLogic.DeveloperInfo> EmployeeNamesByCompany()
+        {
+            return this.logic.EmployeeNamesByCompany();
+        }
+
+
+       
 
         // GET: api/<DeveloperController>
         [HttpGet]
