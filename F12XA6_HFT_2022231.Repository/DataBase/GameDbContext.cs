@@ -24,9 +24,10 @@ namespace F12XA6_HFT_2022231.Repository
         {
             if (!bulider.IsConfigured)
             {
-                string conn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Game.mdf;Integrated Security=True;MultipleActiveResultSets=True";
+               // string conn = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Game.mdf;Integrated Security=True;MultipleActiveResultSets=True";
 
-                bulider.UseLazyLoadingProxies().UseSqlServer(conn);
+               bulider.UseLazyLoadingProxies().UseInMemoryDatabase("GameDb");
+               //.UseSqlServer(conn);
             }
 
         }
