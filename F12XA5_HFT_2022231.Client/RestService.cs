@@ -16,6 +16,7 @@ namespace MovieDbApp.Client
         {
             bool isOk = false;
             do
+
             {
                 isOk = Ping(baseurl + pingableEndpoint);
             } while (isOk == false);
