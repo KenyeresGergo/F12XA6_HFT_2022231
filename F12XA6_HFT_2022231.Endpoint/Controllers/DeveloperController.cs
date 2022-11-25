@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace F12XA6_HFT_2022231.Endpoint.Controllers
 {
-    [Route("[controller]/[action]")]
+    [Route("[controller]")]
     [ApiController]
     public class DeveloperController : ControllerBase
     {
@@ -19,12 +19,7 @@ namespace F12XA6_HFT_2022231.Endpoint.Controllers
             this.logic = logic;
         }
 
-      
-        [HttpGet]
-        public IEnumerable<DeveloperLogic.DeveloperInfo> EmployeeNamesByCompany()
-        {
-            return this.logic.EmployeeNamesByCompany();
-        }
+
 
 
        

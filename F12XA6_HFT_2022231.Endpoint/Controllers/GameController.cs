@@ -8,7 +8,7 @@ using static F12XA6_HFT_2022231.Logic.ModelLogics.GameLogic;
 
 namespace F12XA6_HFT_2022231.Endpoint.Controllers
 {
-    [Route("[controller]/[action]")]
+    [Route("[controller]")]
     [ApiController]
     public class GameController : ControllerBase
     {
@@ -21,16 +21,7 @@ namespace F12XA6_HFT_2022231.Endpoint.Controllers
 
     
 
-        [HttpGet]
-        public IEnumerable<GameInfo> GameCountByStudio()
-        {
-            return this.logic.GameCountByStudio();
-        } 
-        [HttpGet]
-        public IEnumerable<GameInfo> AvgRatingByStudio()
-        {
-            return this.logic.AvgRatingByStudio();
-        }
+     
 
    
         // GET: api/<GameController>

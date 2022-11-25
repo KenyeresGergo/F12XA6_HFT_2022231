@@ -5,6 +5,7 @@ using System.Linq;
 using System.Numerics;
 using System.Threading.Channels;
 using F12XA6_HFT_2022231.Models;
+using ConsoleTools;
 
 namespace F12XA5_HFT_2022231.Client
 {
@@ -87,7 +88,7 @@ namespace F12XA5_HFT_2022231.Client
             {
                 Console.Write("Enter DevStudio's id to update: ");
                 int id = int.Parse(Console.ReadLine());
-                DevStudio one = rest.Get<DevStudio>(id, "Game");
+                DevStudio one = rest.Get<DevStudio>(id, "game");
                 Console.Write($"New name [old: {one.StudioName}]: ");
                 string name = Console.ReadLine();
                 one.StudioName = name;
@@ -117,7 +118,37 @@ namespace F12XA5_HFT_2022231.Client
         }
         static void Main(string[] args)
         {
-            
+            rest = new RestService("http://localhost:47550/", "game");
+
+            var GameSubMenu = new ConsoleMenu(args, level: 1)
+                .Add("List", () => List("Game"))
+                .Add("Create", () => Create("Game"))
+                .Add("Delete", () => Delete("Game"))
+                .Add("Update", () => Update("Game"))
+                .Add("Exit", ConsoleMenu.Close);
+
+            var DeveloperSubMenu = new ConsoleMenu(args, level: 1)
+                .Add("List", () => List("Developer"))
+                .Add("Create", () => Create("Developer"))
+                .Add("Delete", () => Delete("Developer"))
+                .Add("Update", () => Update("Developer"))
+                .Add("Exit", ConsoleMenu.Close);
+
+            var DevStudioSubMenu = new ConsoleMenu(args, level: 1)
+                .Add("List", () => List("DevStudio"))
+                .Add("Create", () => Create("DevStudio"))
+                .Add("Delete", () => Delete("DevStudio"))
+                .Add("Update", () => Update("DevStudio"))
+                .Add("Exit", ConsoleMenu.Close);
+
+
+            var menu = new ConsoleMenu(args, level: 0)
+                .Add("Games", () => GameSubMenu.Show())
+                .Add("Developers", () => DeveloperSubMenu.Show())
+                .Add("DevStudios", () => DevStudioSubMenu.Show())
+                .Add("Exit", ConsoleMenu.Close);
+
+            menu.Show();
         }
     }
 }

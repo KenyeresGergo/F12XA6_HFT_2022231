@@ -9,7 +9,7 @@ using static F12XA6_HFT_2022231.Logic.ModelLogics.GameLogic;
 
 namespace F12XA6_HFT_2022231.Endpoint.Controllers
 {
-    [Route("[controller]/[action]")]
+    [Route("[controller]")]
     [ApiController]
     public class DevStudioController : ControllerBase
     {
@@ -20,19 +20,10 @@ namespace F12XA6_HFT_2022231.Endpoint.Controllers
         {
             this.logic = logic;
         }
-        [HttpGet]
-        public IEnumerable<ICollection<Game>> GamesOfASelectedStudio(string studioname)
-        {
-            return this.logic.GamesOfASelectedStudio(studioname);
-        }
+       
 
         // GET: api/<DevStudioController>
-        [HttpGet]
-        public IEnumerable<DevStudio> ReadAll()
-        {
-            return this.logic.ReadAll();
-        }
-
+      
         // GET api/<DevStudioController>/5
         [HttpGet("{id}")]
         public DevStudio Read(int id)
