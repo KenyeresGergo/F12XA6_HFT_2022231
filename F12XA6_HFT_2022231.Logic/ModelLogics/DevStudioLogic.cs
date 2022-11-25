@@ -66,14 +66,6 @@ namespace F12XA6_HFT_2022231.Logic
         }
 
         #endregion
-
-        public class StudiInfo
-        {
-            public List<string> GameTytles { get; set; }
-            public string StudioName { get; set; }
-            public List<string> DevStudionames { get; set; }
-
-        }
     }
 
   

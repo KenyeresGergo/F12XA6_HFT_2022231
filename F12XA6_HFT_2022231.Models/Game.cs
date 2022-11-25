@@ -55,5 +55,13 @@ namespace F12XA6_HFT_2022231.Models
             this.PublisherStudioId = old.PublisherStudioId;
             this.Developers = old.Developers;   
         }
+
+        public class GameInfo
+        {
+            public string PublisherStudioName { get; set; }
+            public int GameCount { get; set; }
+            public double AvgRating { get; set; }
+            public string GameName { get; set; }
+        }
     }
 }

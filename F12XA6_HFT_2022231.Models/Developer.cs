@@ -47,5 +47,14 @@ namespace F12XA6_HFT_2022231.Models
             this.Salary = other.Salary;
             this.Company = other.Company;
         }
+        public class DeveloperInfo
+        {
+            public string CompanyName { get; set; }
+            public  List<string> Developernames { get; set; }
+            public int GameCount { get; set; }
+
+        }
+
+      
     }
 }

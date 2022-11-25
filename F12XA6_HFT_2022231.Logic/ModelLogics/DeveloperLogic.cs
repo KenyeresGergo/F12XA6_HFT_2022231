@@ -54,12 +54,12 @@ namespace F12XA6_HFT_2022231.Logic.ModelLogics
 
         #region nonCRUD methods
 
-        public IEnumerable<DeveloperInfo> EmployeeNamesByCompany()//Return the names of the workers by company
+        public IEnumerable<Developer.DeveloperInfo> EmployeeNamesByCompany()//Return the names of the workers by company
         {
             var res = from x in repo.ReadAll()
                 group x by x.Company
                 into g orderby g.Key.Id
-                select new DeveloperInfo
+                select new Developer.DeveloperInfo
                 {
                     CompanyName = g.Key.StudioName,
                     Developernames = g.Key.Employees.Select(t => t.DevName).ToList()
@@ -67,12 +67,12 @@ namespace F12XA6_HFT_2022231.Logic.ModelLogics
             return res;
         }
 
-        public IEnumerable<DeveloperInfo> GamesCountByWorkplace()//developer cegenek hany jateka van
+        public IEnumerable<Developer.DeveloperInfo> GamesCountByWorkplace()//developer cegenek hany jateka van
         {
             var res = from x in repo.ReadAll()
                 group x by x.Company
                 into g
-                select new DeveloperInfo()
+                select new Developer.DeveloperInfo()
                 {
                     CompanyName = g.Key.StudioName,
                     GameCount = g.Key.Games.Count
@@ -81,16 +81,5 @@ namespace F12XA6_HFT_2022231.Logic.ModelLogics
         } 
 
         #endregion
-
-
-
-
-        public class DeveloperInfo
-        {
-            public string CompanyName { get; set; }
-            public  List<string> Developernames { get; set; }
-            public int GameCount { get; set; }
-
-        }
     }
 }

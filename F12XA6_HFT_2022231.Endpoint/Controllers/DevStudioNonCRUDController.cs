@@ -18,7 +18,6 @@ namespace F12XA6_HFT_2022231.Endpoint.Controllers
             this.logic = logic;
         }
 
-
         [HttpGet]
         public IEnumerable<ICollection<Game>> GamesOfASelectedStudio(string studioname)
         {

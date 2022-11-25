@@ -16,8 +16,8 @@ namespace F12XA6_HFT_2022231.Logic
         public void Update(Game item);
         public void Delete(int Id);
 
-        public IEnumerable<GameLogic.GameInfo> GameCountByStudio();
-        public IEnumerable<GameLogic.GameInfo> AvgRatingByStudio();
+        public IEnumerable<Game.GameInfo> GameCountByStudio();
+        public IEnumerable<Game.GameInfo> AvgRatingByStudio();
 
     }
 }

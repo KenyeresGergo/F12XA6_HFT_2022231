@@ -16,6 +16,7 @@ namespace F12XA6_HFT_2022231.Logic.Interfaces
         public void Update(Developer item);
         public void Delete(int Id);
 
-        public IEnumerable<DeveloperInfo> EmployeeNamesByCompany();
+        public IEnumerable<Developer.DeveloperInfo> EmployeeNamesByCompany();
+        public IEnumerable<Developer.DeveloperInfo> GamesCountByWorkplace();
     }
 }

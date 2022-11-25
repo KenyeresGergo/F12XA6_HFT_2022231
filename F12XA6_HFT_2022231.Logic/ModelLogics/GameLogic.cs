@@ -59,12 +59,12 @@ namespace F12XA6_HFT_2022231.Logic.ModelLogics
        
         #region non CRUD methods
 
-        public IEnumerable<GameInfo> GameCountByStudio() //Returns the number of games produced by a studio
+        public IEnumerable<Game.GameInfo> GameCountByStudio() //Returns the number of games produced by a studio
         {
             var res = from x in repository.ReadAll()
                 group x by x.PublisherStudio
                 into g
-                select new GameInfo()
+                select new Game.GameInfo()
                 {
                     PublisherStudioName = g.Key.StudioName,
                     GameCount = g.Key.Games.Count
@@ -72,12 +72,12 @@ namespace F12XA6_HFT_2022231.Logic.ModelLogics
             return res;
         }
 
-        public IEnumerable<GameInfo> AvgRatingByStudio() //Returns the average rating of games by a studio
+        public IEnumerable<Game.GameInfo> AvgRatingByStudio() //Returns the average rating of games by a studio
         {
             var res = from x in repository.ReadAll()
                 group x by x.PublisherStudio
                 into g orderby g.Key.Id
-                select new GameInfo
+                select new Game.GameInfo
                 {
                     AvgRating = g.Key.Games.Select(t => t.Rating).Average(),
                     PublisherStudioName = g.Key.StudioName
@@ -87,15 +87,6 @@ namespace F12XA6_HFT_2022231.Logic.ModelLogics
         
 
         #endregion
-
-
-        public class GameInfo
-        {
-            public string PublisherStudioName { get; set; }
-            public int GameCount { get; set; }
-            public double AvgRating { get; set; } 
-            public string GameName { get; set; }
-        }
     }
 
    
