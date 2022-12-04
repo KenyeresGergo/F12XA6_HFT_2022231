@@ -78,10 +78,10 @@ namespace F12XA6_HFT_2022231.Repository
                     new Game(23,"Silent Hill", 26,17,4),
                     new Game(24,"Red Dead Redemption 2", 65,2,9),
                     new Game(25,"Assassin's Creed Odyssey", 60,4,6),
-                    new Game(25,"For Honor", 50,4,5),
-                    new Game(25,"Tom Clancy's The Division", 70,4,8),
-                    new Game(25,"TCrash Team Racing Nitro-Fueled", 40,8,6),
-                    new Game(25,"NBA 2K22", 70,13,8),
+                    new Game(26,"For Honor", 50,4,5),
+                    new Game(27,"Tom Clancy's The Division", 70,4,8),
+                    new Game(28,"TCrash Team Racing Nitro-Fueled", 40,8,6),
+                    new Game(29,"NBA 2K22", 70,13,8),
                     
                     
                 }
